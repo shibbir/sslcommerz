@@ -1,0 +1,14 @@
+﻿@model Dictionary<string, string>
+
+<div class="alert alert-warning" role="alert">
+    <h4 class="alert-heading">Transaction cancelled!</h4>
+    <p>Transaction has been cancelled by the user. <a href="/" class="alert-link">Return to home</a>.</p>
+    <hr>
+    <p class="mb-0">
+        @foreach (var prop in Model)
+        {
+            <code>@prop.Key: @prop.Value</code>
+            <br>
+        }
+    </p>
+</div>

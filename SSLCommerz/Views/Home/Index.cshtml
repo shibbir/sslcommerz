@@ -1,0 +1,64 @@
+﻿<h3 class="text-center text-info">SSLCommerz integration in ASP.NET Core</h3>
+
+<p class="lead">There are two ways to display the SSLCOMMERZ payment page for your customer.</p>
+
+<div class="row">
+    <div class="col-sm">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Easy Checkout Integration</h5>
+                <p class="card-text">It is a embedded js integration within your site which will display the payment channels in your page.</p>
+                <button class="btn btn-primary" id="sslczPayBtn"
+                        token="if you have any token validation"
+                        postdata="your javascript arrays or objects which requires in backend"
+                        order="If you already have the transaction generated for current order"
+                        endpoint="/Home/AjaxCheckout">
+                    Pay Now
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Hosted Payment Integration</h5>
+                <p class="card-text">Here, you will redirect the customer to SSLCOMMERZ Hosted page to display the payment channels</p>
+                <a href="/Home/HostedCheckout" class="btn btn-info">Checkout</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const obj = {
+        total_amount: "10200",
+        currency: "BDT",
+        tran_id: `TRAN${new Date().getMilliseconds()}`,
+        success_url: `${window.location.href}Home/Success`,
+        fail_url: `${window.location.href}Home/Fail`,
+        cancel_url: `${window.location.href}Home/Cancel`,
+        cus_name: "John Doe",
+        cus_email: "john.doe@mail.co",
+        cus_add1: "Address Line On",
+        cus_city: "Dhaka",
+        cus_postcode: "1219",
+        cus_country: "Bangladesh",
+        cus_phone: "8801XXXXXXXXX",
+        shipping_method: "NO",
+        product_name: "UD",
+        product_category: "Service",
+        product_profile: "general"
+    };
+
+    document.getElementById("sslczPayBtn").postdata = obj;
+
+    (function (window, document) {
+	    var loader = function () {
+	        var script = document.createElement("script"), tag = document.getElementsByTagName("script")[0];
+	        script.src = "https://sandbox.sslcommerz.com/embed.min.js?" + Math.random().toString(36).substring(7);
+	        tag.parentNode.insertBefore(script, tag);
+	    };
+
+	    window.addEventListener ? window.addEventListener("load", loader, false) : window.attachEvent("onload", loader);
+})(window, document);
+</script>

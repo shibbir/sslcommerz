@@ -7,15 +7,19 @@ namespace SSLCommerz
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
-
         public IConfiguration Configuration { get; }
+
+        public Startup()
+        {
+            var builder = new ConfigurationBuilder()
+                .AddEnvironmentVariables();
+
+            Configuration = builder.Build();
+        }
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<EnvironmentConfig>(Configuration);
             services.AddControllersWithViews();
         }
 

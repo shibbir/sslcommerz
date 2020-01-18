@@ -1,7 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using static SSLCommerz.SSLCommerz;
 
@@ -9,10 +10,18 @@ namespace SSLCommerz.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly string storeID = "<your_store_id>";
-        private readonly string storePassword = "<your_store_password>";
+        private readonly string storeID = string.Empty;
+        private readonly string storePassword = string.Empty;
+        private readonly EnvironmentConfig _configuration;
 
         private readonly string totalAmount = "10200";
+
+        public HomeController(IOptions<EnvironmentConfig> configuration)
+        {
+            _configuration = configuration.Value;
+            storeID = _configuration.StoreId;
+            storePassword = _configuration.StorePassword;
+        }
 
         public IActionResult Index()
         {

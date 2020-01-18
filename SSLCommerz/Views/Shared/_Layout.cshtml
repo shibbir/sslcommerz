@@ -2,22 +2,64 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <meta name="description" content="SSLCommerz Integration in ASP.NET Core" />
+
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.8.0/css/bulma.min.css" integrity="sha256-D9M5yrVDqFlla7nlELDaYZIpXfFWDytQtiV+TaH6F1I=" crossorigin="anonymous" />
+
+    <style>
+        .footer { padding-bottom: 15px; padding-top: 15px; }
+    </style>
 
     <title>SSLCommerz Integration in ASP.NET Core</title>
 </head>
 <body>
-    <div class="container">
-        @RenderBody()
-        <footer>
-            <p>
-                The source code is licensed under
-                <a href="http://opensource.org/licenses/mit-license.php" target="_blank">MIT</a>.
-            </p>
+    <section class="section">
+        <div class="container">
+            <header>
+                <h2 class="title has-text-primary">SSLCommerz integration in ASP.NET Core</h2>
 
-            <a href="https://github.com/shibbir/sslcommerz" target="_blank" class="btn btn-light">GitHub</a>
-        </footer>
-    </div>
+                <div class="field is-grouped is-grouped-multiline">
+                    <div class="control">
+                        <div class="tags has-addons">
+                            <span class="tag">SSLCommerz</span>
+                            <span class="tag is-info">4.0</span>
+                        </div>
+                    </div>
+                    <div class="control">
+                        <div class="tags has-addons">
+                            <span class="tag">ASP.NET Core</span>
+                            <span class="tag is-warning">3.1</span>
+                        </div>
+                    </div>
+                    <div class="control">
+                        <div class="tags has-addons">
+                            <span class="tag">Docker</span>
+                            <span class="tag is-link">2.1</span>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+            </header>
+
+            @RenderBody()
+
+            <footer class="footer">
+                <div class="content">
+                    <p class="is-light">
+                        The source code is available in <a href="https://github.com/shibbir/sslcommerz" target="_blank">GitHub</a>.
+                    </p>
+                    <a href="https://travis-ci.com/shibbir/sslcommerz">
+                        <img src="https://travis-ci.com/shibbir/sslcommerz.svg?branch=master"/>
+                    </a>
+                    <a href="https://opensource.org/licenses/MIT">
+                        <img src="https://img.shields.io/badge/license-MIT-blue.svg"/>
+                    </a>
+                </div>
+            </footer>
+        </div>
+    </section>
 </body>
 </html>

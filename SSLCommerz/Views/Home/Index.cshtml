@@ -1,29 +1,42 @@
-﻿<h3 class="text-center text-info">SSLCommerz integration in ASP.NET Core</h3>
+﻿<article class="message is-info">
+    <div class="message-body">
+        There are two ways to display the <strong>SSLCOMMERZ</strong> payment page for your customer.
+    </div>
+</article>
 
-<p class="lead">There are two ways to display the SSLCOMMERZ payment page for your customer.</p>
-
-<div class="row">
-    <div class="col-sm">
+<div class="columns">
+    <div class="column">
         <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Easy Checkout Integration</h5>
-                <p class="card-text">It is a embedded js integration within your site which will display the payment channels in your page.</p>
-                <button class="btn btn-primary" id="sslczPayBtn"
+            <header class="card-header">
+                <p class="card-header-title">Easy Checkout Integration</p>
+            </header>
+            <div class="card-content">
+                <div class="content">
+                    <p>It is a embedded js integration within your site which will display the payment channels in your page.</p>
+
+                    <button class="btn btn-primary" id="sslczPayBtn"
                         token="if you have any token validation"
                         postdata="your javascript arrays or objects which requires in backend"
                         order="If you already have the transaction generated for current order"
                         endpoint="/Home/AjaxCheckout">
-                    Pay Now
-                </button>
+                        Pay Now
+                    </button>
+                </div>
             </div>
         </div>
     </div>
-    <div class="col-sm">
+    <div class="column">
         <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Hosted Payment Integration</h5>
-                <p class="card-text">Here, you will redirect the customer to SSLCOMMERZ Hosted page to display the payment channels</p>
-                <a href="/Home/HostedCheckout" class="btn btn-info">Checkout</a>
+            <header class="card-header">
+                <p class="card-header-title">Hosted Payment Integration</p>
+            </header>
+            <div class="card-content">
+                <div class="content">
+                    <p>Here, you will redirect the customer to SSLCOMMERZ Hosted page to display the payment channels.</p>
+                    <a href="/Home/HostedCheckout" class="button is-info">
+                        <i class="icon ion-send"></i> Checkout
+                    </a>
+                </div>
             </div>
         </div>
     </div>

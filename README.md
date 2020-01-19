@@ -10,7 +10,7 @@ You need to create a free sandbox account from [SSLCommerz](https://developer.ss
 In this demo project I've only used the parameters that are required to work with SSLCommerz api. For more details please read the official documentation from [here](https://developer.sslcommerz.com/doc/v4/).
 
 ## Configuring environment variables
-> Open `launchSettings.json` file inside the *Properties* directory. The add your store id and store password from SSLCommerz.
+> Open `launchSettings.json` file inside the *Properties* directory. Then add your store id and store password from SSLCommerz.
 
 ```json
 "environmentVariables": {

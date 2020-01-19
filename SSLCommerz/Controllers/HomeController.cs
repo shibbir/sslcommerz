@@ -100,7 +100,7 @@ namespace SSLCommerz.Controllers
             {
                 SSLCommerz sslcz = new SSLCommerz(storeID, storePassword, true);
 
-                if (sslcz.OrderValidate(response.tran_id, "500", "BDT", Request))
+                if (sslcz.OrderValidate(response.tran_id, totalAmount, "BDT", Request))
                 {
                     return View("Success", GetProperties(response));
                 }

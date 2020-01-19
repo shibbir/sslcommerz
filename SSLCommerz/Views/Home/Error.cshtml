@@ -1,8 +1,8 @@
-﻿@model Dictionary<string, string>
+@model Dictionary<string, string>
 
-<article class="message is-info">
+<article class="message is-danger">
     <div class="message-header">
-        <p>TTransaction cancelled! <a href="/">Return to home</a>.</p>
+        <p>Transaction successful but the order is not valid! <a href="/">Return to home</a>.</p>
     </div>
     <div class="message-body">
         @foreach (var prop in Model)

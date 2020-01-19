@@ -70,9 +70,9 @@ namespace SSLCommerz.Controllers
                 { "total_amount", totalAmount },
                 { "currency", "BDT"},
                 { "tran_id", GenerateUniqueId() },
-                { "success_url", baseUrl + "Home/Success" },
-                { "fail_url", baseUrl + "Home/Fail" },
-                { "cancel_url", baseUrl + "Home/Cancel" },
+                { "success_url", baseUrl + "Home/Callback" },
+                { "fail_url", baseUrl + "Home/Callback" },
+                { "cancel_url", baseUrl + "Home/Callback" },
                 { "cus_name", "John Doe" },
                 { "cus_email", "john.doe@mail.co" },
                 { "cus_add1", "Address Line On" },
@@ -94,37 +94,29 @@ namespace SSLCommerz.Controllers
         }
 
         [HttpPost]
-        public IActionResult Success(SSLCommerzValidatorResponse response)
+        public IActionResult Callback(SSLCommerzValidatorResponse response)
         {
-            var isValidOrder = false;
-
-            if (!string.IsNullOrEmpty(Request.Form["status"]) && Request.Form["status"] == "VALID")
+            if (!string.IsNullOrEmpty(response.status) && response.status == "VALID")
             {
-                string transactionId = Request.Form["tran_id"];
-                string currency = "BDT";
-
                 SSLCommerz sslcz = new SSLCommerz(storeID, storePassword, true);
-                isValidOrder = sslcz.OrderValidate(transactionId, totalAmount, currency, Request);
+
+                if (sslcz.OrderValidate(response.tran_id, "500", "BDT", Request))
+                {
+                    return View("Success", GetProperties(response));
+                }
             }
 
-            if (isValidOrder)
+            if (!string.IsNullOrEmpty(response.status) && response.status == "FAILED")
             {
-                return View(GetProperties(response));
+                return View("Fail", GetProperties(response));
             }
 
-            return View(GetProperties(response));
-        }
+            if (!string.IsNullOrEmpty(response.status) && response.status == "CANCELLED")
+            {
+                return View("Cancel", GetProperties(response));
+            }
 
-        [HttpPost]
-        public IActionResult Fail(SSLCommerzValidatorResponse response)
-        {
-            return View(GetProperties(response));
-        }
-
-        [HttpPost]
-        public IActionResult Cancel(SSLCommerzValidatorResponse response)
-        {
-            return View(GetProperties(response));
+            return View("Error", GetProperties(response));
         }
 
         private string GenerateUniqueId()
@@ -149,8 +141,11 @@ namespace SSLCommerz.Controllers
             foreach (var prop in type.GetProperties())
             {
                 var val = prop.GetValue(obj, new object[] { });
-                var valStr = val == null ? "" : val.ToString();
-                props.Add(prop.Name, valStr);
+
+                if(val != null)
+                {
+                    props.Add(prop.Name, val.ToString());
+                }
             }
 
             return props;

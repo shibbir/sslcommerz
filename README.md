@@ -14,7 +14,6 @@ In this demo project I've only used the parameters that are required to work wit
 
 ```json
 "environmentVariables": {
-    // other env variables
     "StoreId": "your_store_id",
     "StorePassword": "your_store_password"
 }

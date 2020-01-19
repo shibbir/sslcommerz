@@ -1,14 +1,14 @@
 ﻿@model Dictionary<string, string>
 
-<div class="alert alert-danger" role="alert">
-    <h4 class="alert-heading">Transaction failed!</h4>
-    <p>A failure has been occurred during payment. <a href="/" class="alert-link">Return to home</a>.</p>
-    <hr>
-    <p class="mb-0">
+<article class="message is-warning">
+    <div class="message-header">
+        <p>Transaction failed! <a href="/">Return to home</a>.</p>
+    </div>
+    <div class="message-body">
         @foreach (var prop in Model)
         {
             <code>@prop.Key: @prop.Value</code>
             <br>
         }
-    </p>
-</div>
+    </div>
+</article>

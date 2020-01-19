@@ -2,7 +2,6 @@
 > SSLCommerz integration in ASP.NET Core
 
 [![Build Status](https://travis-ci.com/shibbir/sslcommerz.svg?branch=master)](https://travis-ci.com/shibbir/sslcommerz)
-[![Build status](https://ci.appveyor.com/api/projects/status/gufvbf0vq4jtcqn5?svg=true)](https://ci.appveyor.com/project/shibbir/sslcommerz)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](http://opensource.org/licenses/MIT)
 
 ## Instructions
@@ -11,11 +10,14 @@ You need to create a free sandbox account from [SSLCommerz](https://developer.ss
 In this demo project I've only used the parameters that are required to work with SSLCommerz api. For more details please read the official documentation from [here](https://developer.sslcommerz.com/doc/v4/).
 
 ## Configuring environment variables
-> Rename .env.example file to .env and adjust your environment variables. Details for each environment variables are below:
+> Open `launchSettings.json` file inside the *Properties* directory. The add your store id and store password from SSLCommerz.
 
-```bash
-STORE_ID=<your_store_id>
-STORE_PASSWORD=<your_store_password>
+```json
+"environmentVariables": {
+    // other env variables
+    "StoreId": "your_store_id",
+    "StorePassword": "your_store_password"
+}
 ```
 
 ## Docker

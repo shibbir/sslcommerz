@@ -1,0 +1,72 @@
+<div class="columns">
+    <div class="column">
+        <div class="card">
+            <header class="card-header">
+                <p class="card-header-title">VISA</p>
+            </header>
+            <div class="card-content">
+                <div id="visa"></div>
+            </div>
+        </div>
+    </div>
+    <div class="column">
+        <div class="card">
+            <header class="card-header">
+                <p class="card-header-title">Mastercard</p>
+            </header>
+            <div class="card-content">
+                <div id="mastercard"></div>
+            </div>
+        </div>
+    </div>
+    <div class="column">
+        <div class="card">
+            <header class="card-header">
+                <p class="card-header-title">American Express</p>
+            </header>
+            <div class="card-content">
+                <div id="amex"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<form></form>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/card/2.4.0/card.min.js" integrity="sha256-AefnXef338CwR+vCJ1NO944qF4dy6OxZVAmWHWnYljs=" crossorigin="anonymous"></script>
+
+<script>
+    const visa = new Card({
+        form: "form",
+        container: "#visa",
+        placeholders: {
+            number: "4111 1111 1111 1111",
+            name: "John Doe",
+            expiry: "12/25",
+            cvc: "111"
+        }
+    });
+    const mastercard = new Card({
+        form: "form",
+        container: "#mastercard",
+        placeholders: {
+            number: "5111 1111 1111 1111",
+            name: "Jane Doe",
+            expiry: "12/25",
+            cvc: "111"
+        }
+    });
+    const amex = new Card({
+        form: "form",
+        container: "#amex",
+        placeholders: {
+            number: "3711 1111 1111 1111",
+            name: "Richard Roe",
+            expiry: "12/25",
+            cvc: "1111"
+        }
+    });
+    document.getElementsByClassName("jp-card")[0].className = "jp-card jp-card-visa jp-card-identified";
+    document.getElementsByClassName("jp-card")[1].className = "jp-card jp-card-mastercard jp-card-identified";
+    document.getElementsByClassName("jp-card")[2].className = "jp-card jp-card-amex jp-card-identified";
+</script>

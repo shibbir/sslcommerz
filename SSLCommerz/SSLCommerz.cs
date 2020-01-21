@@ -129,7 +129,6 @@ namespace SSLCommerz
                 {
                     this.error = "Unable to get Transaction JSON status";
                     return false;
-
                 }
             }
             else

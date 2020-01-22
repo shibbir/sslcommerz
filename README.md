@@ -7,10 +7,18 @@
 ## Instructions
 You need to create a free sandbox account from [SSLCommerz](https://developer.sslcommerz.com/registration/). After signing up you will get your store id and store password via email.
 
-In this demo project I've only used the parameters that are required to work with SSLCommerz api. For more details please read the official documentation from [here](https://developer.sslcommerz.com/doc/v4/).
+In this demo project I've only used the parameters that are absolutely required to work with SSLCommerz api version 4.00. The official documentation provide much more details regarding the processes involved as well as explanation of each parameters. You should read the entire documentation for better understanding. You can find the link to the documentation in [here](https://developer.sslcommerz.com/doc/v4/).
 
-## Configuring environment variables
-> Open `launchSettings.json` file inside the *Properties* directory. Then add your store id and store password from SSLCommerz.
+## Running inside a docker container
+You need to have [docker](https://www.docker.com/) installed on your machine before running the followings:
+
+```bash
+$ docker pull shibbir/sslcommerz
+$ docker run -d --rm -p 8080:80 --name sslcommerz -e StoreId='<your_store_id>' -e StorePassword='your_store_password' sslcommerz-aspnetcore
+```
+
+## Running in Visual Studio
+Open `launchSettings.json` file inside the *Properties* directory. Then add your store id and store password from SSLCommerz.
 
 ```json
 "environmentVariables": {
@@ -19,12 +27,15 @@ In this demo project I've only used the parameters that are required to work wit
 }
 ```
 
-## Docker
+## Environment Variables
 
-```bash
-docker build -t sslcommerz-aspnetcore .
-docker run -d --rm -p 8080:80 --name sslcommerz -e StoreId='<your_store_id>' -e StorePassword='your_store_password' sslcommerz-aspnetcore
-```
+Name | Description
+------------ | -------------
+StoreId | Your SSLCommerz Store ID
+StorePassword | Your SSLCommerz Store Password
+
+## Demo
+https://sslcommerz.herokuapp.com/
 
 ## License
 <a href="https://opensource.org/licenses/MIT">The MIT License</a>

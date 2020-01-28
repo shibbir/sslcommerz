@@ -18,10 +18,10 @@ $ docker run -d --rm -p 8080:80 --name sslcommerz -e StoreId='<your_store_id>' -
 ```
 
 ## Running in Visual Studio
-Open `launchSettings.json` file inside the *Properties* directory. Then add your store id and store password from SSLCommerz.
+Open `appsettings.json` and add your store id and store password in `EnvironmentVariables` section.
 
 ```json
-"environmentVariables": {
+"EnvironmentVariables": {
     "StoreId": "your_store_id",
     "StorePassword": "your_store_password"
 }

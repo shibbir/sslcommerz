@@ -9,17 +9,14 @@ namespace SSLCommerz
     {
         public IConfiguration Configuration { get; }
 
-        public Startup()
+        public Startup(IConfiguration configuration)
         {
-            var builder = new ConfigurationBuilder()
-                .AddEnvironmentVariables();
-
-            Configuration = builder.Build();
+            Configuration = configuration;
         }
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.Configure<EnvironmentConfig>(Configuration);
+            services.Configure<EnvironmentVariables>(option => Configuration.GetSection("EnvironmentVariables").Bind(option));
             services.AddControllersWithViews();
         }
 

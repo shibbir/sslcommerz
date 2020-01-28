@@ -1,6 +1,6 @@
 namespace SSLCommerz
 {
-    public class EnvironmentConfig
+    public class EnvironmentVariables
     {
         public string StoreId { get; set; }
 

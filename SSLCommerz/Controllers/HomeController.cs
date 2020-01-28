@@ -12,11 +12,11 @@ namespace SSLCommerz.Controllers
     {
         private readonly string storeID = string.Empty;
         private readonly string storePassword = string.Empty;
-        private readonly EnvironmentConfig _configuration;
+        private readonly EnvironmentVariables _configuration;
 
         private readonly string totalAmount = "10200";
 
-        public HomeController(IOptions<EnvironmentConfig> configuration)
+        public HomeController(IOptions<EnvironmentVariables> configuration)
         {
             _configuration = configuration.Value;
             storeID = _configuration.StoreId;
@@ -70,9 +70,9 @@ namespace SSLCommerz.Controllers
                 { "total_amount", totalAmount },
                 { "currency", "BDT"},
                 { "tran_id", GenerateUniqueId() },
-                { "success_url", baseUrl + "Home/Callback" },
-                { "fail_url", baseUrl + "Home/Callback" },
-                { "cancel_url", baseUrl + "Home/Callback" },
+                { "success_url", baseUrl + "Home/PaymentGatewayCallback" },
+                { "fail_url", baseUrl + "Home/PaymentGatewayCallback" },
+                { "cancel_url", baseUrl + "Home/PaymentGatewayCallback" },
                 { "cus_name", "John Doe" },
                 { "cus_email", "john.doe@mail.co" },
                 { "cus_add1", "Address Line On" },
@@ -94,7 +94,7 @@ namespace SSLCommerz.Controllers
         }
 
         [HttpPost]
-        public IActionResult Callback(SSLCommerzValidatorResponse response)
+        public IActionResult PaymentGatewayCallback(SSLCommerzValidatorResponse response)
         {
             if (!string.IsNullOrEmpty(response.status) && response.status == "VALID")
             {
